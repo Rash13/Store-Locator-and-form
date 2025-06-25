@@ -1,23 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
+import Form from './Components/Form';
+import GoogleMap from'./Components/GoogleMap'
 
 function App() {
+  const[show, setShow]=useState(null)
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <div className='flex items-center justify-center m-2'>
+        <button onClick={()=>setShow(!show)} className='p-2 rounded text-white bg-blue-500'>{show ? 'Click here to see Form' : 'Click here to see GoogleMap'}</button>
+      </div>
+      
+      {show ? <GoogleMap/> :
+      <Form/>}
     </div>
   );
 }
